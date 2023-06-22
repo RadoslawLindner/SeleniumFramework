@@ -1,0 +1,51 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+
+<suite name="LoginTests" verbose="1" >
+
+    <test name="PositiveTests" >
+        <parameter name="browser" value="chrome"></parameter>
+        <parameter name="username" value="tomsmith"></parameter>
+        <parameter name="password" value="SuperSecretPassword!"></parameter>
+        <parameter name="flashMessage" value="You logged into a secure area!"></parameter>
+        <parameter name="expextedURL" value="https://the-internet.herokuapp.com/secure"></parameter>
+        <groups>
+            <run>
+                <include name="positiveTests"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="com.herokuapp.theinternet.LoginTests" />
+        </classes>
+    </test>
+
+    <test name="NegativeUsernameTests">
+        <parameter name="browser" value="chrome"></parameter>
+        <parameter name="username" value="incorrect"></parameter>
+        <parameter name="password" value="SuperSecretPassword!"></parameter>
+        <parameter name="flashMessage" value="Your username is invalid!"></parameter>
+        <groups>
+            <run>
+                <include name="negativeTests"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="com.herokuapp.theinternet.LoginTests"/>
+        </classes>
+    </test>
+
+    <test name="NegativePasswordTests">
+        <parameter name="browser" value="edge"></parameter>
+        <parameter name="username" value="tomsmith"></parameter>
+        <parameter name="password" value="SuperWrongPassword!"></parameter>
+        <parameter name="flashMessage" value="Your password is invalid!"></parameter>
+        <groups>
+            <run>
+                <include name="negativeTests"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="com.herokuapp.theinternet.LoginTests"/>
+        </classes>
+    </test>
+
+</suite>
